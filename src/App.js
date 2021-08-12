@@ -2,13 +2,16 @@ import React from 'react';
 import GithubState from './context/github/GithubState';
 import Repos from './components/Repos';
 import './index.css';
+import './Card.scss';
 
 const App = () => {
   return (
     <GithubState>
       <div className='App'>
-        <div className='container'>Github Project</div>
-        <Repos />
+        Github Project
+        <div className='container'>
+          <Repos />
+        </div>
       </div>
     </GithubState>
   );

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+/*   color variables */
+$clr-primary: #d50000;
+$clr-gray: #e1e5ee;
+
+/*   border radius */
+$radius: 0.2rem;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 20px;
+  padding: 0;
+}
+
+body {
+  font-family: Oxygen, sans-serif;
+  margin: 2rem;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card__btn-container {
+  text-align: center;
+}
+
+.card {
+  overflow-wrap: break-word;
+  box-shadow: 0 2px 20px $clr-gray;
+  border-radius: $radius;
+  max-height: 550px;
+  overflow: scroll;
+  transition: transform 200ms ease-in;
+  width: 45%;
+
+  &__title {
+    padding: 1rem;
+  }
+
+  &__description {
+    padding: 0 1rem;
+  }
+
+  &__btn {
+    padding: 1rem;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 2px solid $clr-primary;
+    background: transparent;
+    color: $clr-primary;
+    border-radius: $radius;
+    transition: background 200ms ease-in, color 200ms ease-in;
+    width: 50%;
+
+    &:hover {
+      background: $clr-primary;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  &:hover {
+    cursor: default;
+    transform: scale(1.02);
+  }
+}
