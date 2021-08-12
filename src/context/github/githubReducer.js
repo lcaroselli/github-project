@@ -1,4 +1,4 @@
-import { GET_REPOS } from '../types';
+import { GET_REPOS } from "../types";
 
 // eslint-disable-next-line
 export default (state, action) => {
