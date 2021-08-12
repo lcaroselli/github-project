@@ -1,8 +1,8 @@
-import React, { useReducer } from 'react';
-import axios from 'axios';
-import githubContext from './githubContext';
-import githubReducer from './githubReducer';
-import { GET_REPOS } from '../types';
+import React, { useReducer } from "react";
+import axios from "axios";
+import githubContext from "./githubContext";
+import githubReducer from "./githubReducer";
+import { GET_REPOS } from "../types";
 
 const GithubState = (props) => {
   const initialState = {

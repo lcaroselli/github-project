@@ -1,6 +1,6 @@
-import React, { Fragment, useContext, useEffect } from 'react';
-import Card from './Card';
-import githubContext from '../context/github/githubContext';
+import React, { Fragment, useContext, useEffect } from "react";
+import Card from "./Card";
+import githubContext from "../context/github/githubContext";
 
 const Repos = () => {
   const GithubContext = useContext(githubContext);
@@ -22,7 +22,7 @@ const Repos = () => {
             key={repo.id}
             name={repo.name}
             stars={repo.stargazers_count}
-            type={'repo'}
+            type={"repo"}
             url={repo.html_url}
           />
         </Fragment>
