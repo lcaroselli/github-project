@@ -33,7 +33,7 @@ const Card = ({ name, stars, url, full_name }) => {
     commits.map((commit) => (
       <div className="commit__container">
         <h3>Author:</h3>
-        <p className="card__title">{commit.commit.author.name}</p>
+        <p className="card__description">{commit.commit.author.name}</p>
         <h3>Date Committed:</h3>
         <p className="card__description">{commit.commit.author.date}</p>
         <h3>Commit Message:</h3>
@@ -45,7 +45,7 @@ const Card = ({ name, stars, url, full_name }) => {
     <Fragment>
       <h2>Repository Information</h2>
       <h3>Name:</h3>
-      <p className="card__title">{name}</p>
+      <p className="card__description">{name}</p>
       <h3>URL:</h3>
       <p className="card__description">{url}</p>
       <h3>Stars:</h3>

@@ -14,7 +14,7 @@ const GithubState = (props) => {
   // Get Repos
   const getRepos = async () => {
     const response = await axios.get(
-      `https://api.github.com/search/repositories?q=stars:>1&sort=stars`
+      `https://api.github.com/search/repositories?q=stars:>1&sort=stars&per_page=100`
     );
     dispatch({
       type: GET_REPOS,
@@ -25,8 +25,8 @@ const GithubState = (props) => {
   return (
     <githubContext.Provider
       value={{
-        getRepos,
         repos: state.repos,
+        getRepos,
       }}
     >
       {props.children}
