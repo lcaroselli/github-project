@@ -13,8 +13,8 @@ const GithubState = (props) => {
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
   // Get Repos
-  const getRepos = () => {
-    axios
+  const getRepos = async () => {
+    await axios
       .get(
         `https://api.github.com/search/repositories?q=stars:>1&sort=stars&per_page=100`
       )
