@@ -1,4 +1,4 @@
-import { GET_REPOS } from "../types";
+import { GET_REPOS } from '../types';
 
 // eslint-disable-next-line
 export default (state, action) => {
@@ -7,6 +7,7 @@ export default (state, action) => {
       return {
         ...state,
         repos: action.payload,
+        error: action.error,
       };
 
     default:

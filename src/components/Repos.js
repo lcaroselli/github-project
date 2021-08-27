@@ -1,11 +1,11 @@
-import React, { Fragment, useContext, useEffect } from "react";
-import Card from "./Card";
-import githubContext from "../context/github/githubContext";
+import React, { Fragment, useContext, useEffect } from 'react';
+import Card from './Card';
+import githubContext from '../context/github/githubContext';
 
 const Repos = () => {
   const GithubContext = useContext(githubContext);
 
-  const { getRepos, repos } = GithubContext;
+  const { error, getRepos, repos } = GithubContext;
 
   useEffect(() => {
     getRepos();
@@ -22,7 +22,7 @@ const Repos = () => {
             key={repo.id}
             name={repo.name}
             stars={repo.stargazers_count}
-            type={"repo"}
+            type={'repo'}
             url={repo.html_url}
           />
         </Fragment>
@@ -32,7 +32,11 @@ const Repos = () => {
     <div>Loading...</div>
   );
 
-  return <Fragment>{repoCards}</Fragment>;
+  return error ? (
+    <Fragment>{error}</Fragment>
+  ) : (
+    <Fragment>{repoCards}</Fragment>
+  );
 };
 
 export default Repos;
