@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import axios from 'axios';
+import Pagination from '../components/Pagination';
 import '../Card.scss';
 
 const Card = ({ name, stars, url, full_name }) => {
@@ -7,6 +8,20 @@ const Card = ({ name, stars, url, full_name }) => {
   const [loadingCommits, setLoadingCommits] = useState(false);
   const [commits, setCommits] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [commitsPerPage] = useState(5);
+
+  // Get current commits
+  const indexOfLastCommit = currentPage * commitsPerPage;
+  const indexOfFirstCommit = indexOfLastCommit - commitsPerPage;
+
+  // should slice out the number of commits we want, which should be 5
+  const currentCommits = commits.slice(indexOfFirstCommit, indexOfLastCommit);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const toggleCommits = async () => {
     if (!toggle) {
@@ -33,7 +48,7 @@ const Card = ({ name, stars, url, full_name }) => {
   };
 
   const commitCardInfo = () =>
-    commits.map((commit) => (
+    currentCommits.map((commit) => (
       <div className='commit__container'>
         <h3>Author:</h3>
         <p className='card__description'>{commit.commit.author.name}</p>
@@ -67,7 +82,16 @@ const Card = ({ name, stars, url, full_name }) => {
             </h2>
             {errorMessage && <div>{errorMessage}</div>}
             {loadingCommits && <div>Loading Commits...</div>}
-            {commits.length >= 1 && !loadingCommits && commitCardInfo()}
+            {commits.length >= 1 && !loadingCommits && (
+              <Fragment>
+                {commitCardInfo()}
+                <Pagination
+                  commitsPerPage={commitsPerPage}
+                  totalCommits={commits.length}
+                  paginate={paginate}
+                />
+              </Fragment>
+            )}
             {!loadingCommits && !errorMessage && commits.length <= 0 && (
               <div>No Commits last 24 hours</div>
             )}
